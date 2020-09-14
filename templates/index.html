@@ -1,0 +1,80 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.10.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"> </script>
+    <script src="simulate.js"></script>
+    <script src="index.js"></script>
+    
+</head>
+<style>
+    video {
+        position: static;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transform: scale(-1, 1);
+        -webkit-transform: scale(-1, 1);
+    }
+
+    canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1
+    }
+    .container{
+        display: grid;
+        grid-template-columns: 20% 30% 30% 20%;
+        grid-column-gap:2em;
+
+    }
+    .container div{
+        border: 10px #ccc solid ;
+        padding: 10px;
+        
+    }
+    .div2 {
+        order:3
+        p
+    }
+    #score-title, #score{
+        justify-content: center;
+        color: tomato;
+        margin-left: 350px;
+    }
+</style>
+
+<body>
+    <center><h1>--- Hand Cricket ---</h1></center>
+    
+    <div class="container">
+        <h1>Player 1</h1>
+        <div class="div1">
+            <video id="myVideo" height=300 autoplay></video>
+        </div>
+        <div class="div2">
+            <img src="{{url_for('static',filename='one.jpg')}}" />
+        </div>
+    </div>
+    <script src="/static/local.js"></script>
+    <script id="objDetect" src="/static/objDetect.js" data-source="myVideo" data-mirror="true" data-uploadWidth="1280"
+        data-scoreThreshold="0.25"></script>
+    
+    <h2 id="score-title">YOUR SCORE</h2>
+    
+    
+    <h1 id="score">None</h1>
+    <h1>TOTAL SCORE </h1>
+    <h1 class="total">0</h1>
+    <h1>MACHINE SCORE </h1>
+    <h1 class="mscore">0</h1>
+    <h1>TOTAL SCORE </h1>
+    <h1 class="mtotal">0</h1>
+    <button type="button" id="next" disabled="true" onclick="play()">NEXT INNING </button>
+    <button type="button"  id="results" onclick="results()">SEE RESULTS</button>
+    <button type="submit" id="preds" onclick="predict()">StART </button>
+    <h1 id="prediction">NONE</h1>
+</body>
+</html>
