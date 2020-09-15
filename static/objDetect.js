@@ -61,7 +61,7 @@ function postFile(file) {
 
     let xhr = new XMLHttpRequest();
     xhr.open('POST', window.location.origin+'/image', true);
-    console.log("posted")
+    
     xhr.responseType = 'json';
     xhr.send(formdata);
 
@@ -70,7 +70,7 @@ function postFile(file) {
     // imageCanvas.toBlob(postFile, 'image/jpeg');
 
     xhr.onload = function () {
-        console.log("inside onload");
+    
         if (this.status === 200) {
             let objects = this.response;
             //draw the boxes
@@ -89,7 +89,7 @@ function postFile(file) {
 //Start object detection
 function startObjectDetection() {
 
-    console.log("starting  detection");
+    
 
     //Set canvas sizes base don input video
     drawCanvas.width = v.videoWidth;
@@ -114,7 +114,7 @@ function startObjectDetection() {
 
 //check if metadata is ready - we need the video size
 v.onloadedmetadata = () => {
-    console.log("video metadata ready");
+    
     gotMetadata = true;
     if (isPlaying)
         startObjectDetection();
@@ -122,7 +122,7 @@ v.onloadedmetadata = () => {
 
 //see if the video has started playing
 v.onplaying = () => {
-    console.log("video playing");
+    
     isPlaying = true;
     if (gotMetadata) {
         startObjectDetection();

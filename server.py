@@ -2,9 +2,8 @@ from flask import Flask, render_template, request, jsonify, Response, make_respo
 import requests
 from FIveFingerAPI import FiveFingerAPI
 from PIL import Image
-
 import numpy as np
-from camera import VideoCamera
+
 
 
 app= Flask(__name__)
@@ -29,7 +28,7 @@ def image():
     image_object = np.array(Image.open(image_file).convert('RGB'))
     image_object = image_object[:, :, ::-1].copy()
     score= FiveFingerAPI().runmodel(image_object)
-    print(score)
+    
     d={"message": str(score)}
     return jsonify(d)
 

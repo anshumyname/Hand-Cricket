@@ -1,11 +1,6 @@
 <html>
 
 <head>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.10.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"> </script>
-    <script src="simulate.js"></script>
-    <script src="index.js"></script>
     
 </head>
 <style>
@@ -24,25 +19,59 @@
         left: 0;
         z-index: 1
     }
+
+    .row1 {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+    }
     .container{
         display: grid;
-        grid-template-columns: 20% 30% 30% 20%;
-        grid-column-gap:2em;
+        grid-template-columns: 1fr 2fr 2fr 1fr;
+        grid-column-gap:1em;
 
     }
-    .container div{
+    .container  img, video{
         border: 10px #ccc solid ;
         padding: 10px;
         
     }
-    .div2 {
-        order:3
-        p
+
+    .currentscore {
+        display: grid;
+        /* grid-auto-rows: 2; */
+        border: 10px;
+
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        /* grid-template-rows: 50% 50%; */
     }
-    #score-title, #score{
-        justify-content: center;
+
+    .currentscore h2{
+        background: grey;
+        border: red;
+        padding:1em;
+
+    }
+
+    #score-title, #score,#total-title,#total{
+        /* justify-content: cente; */
         color: tomato;
-        margin-left: 350px;
+        /* margin-left: 350px; */
+    }
+    #mscore-title, #mscore, #mtotal-title, #mtotal{
+        /* justify-content: center; */
+        color: tomato;
+        /* margin-left: 500px; */
+    }
+
+    .play-buttons {
+        /* order: 3; */
+        columns: 3;
+        grid-column: 2/5;
+        
+    }
+    .play-buttons button{
+        height: 50px; 
+        width: 200px; 
     }
 </style>
 
@@ -52,29 +81,44 @@
     <div class="container">
         <h1>Player 1</h1>
         <div class="div1">
-            <video id="myVideo" height=300 autoplay></video>
+            <video id="myVideo" height=300  autoplay></video>
         </div>
         <div class="div2">
-            <img src="{{url_for('static',filename='one.jpg')}}" />
+            <!-- <img id='image' src="{{url_for('static',filename='1.jpg')}}" > -->
+            <img id='image' src="/static/1.jpg" width="300" height="300" >
+                                   <!-- url_for('static',filename='3.jpg') -->
         </div>
+        <h1>Player 2</h1>
     </div>
     <script src="/static/local.js"></script>
     <script id="objDetect" src="/static/objDetect.js" data-source="myVideo" data-mirror="true" data-uploadWidth="1280"
         data-scoreThreshold="0.25"></script>
     
-    <h2 id="score-title">YOUR SCORE</h2>
+
+    <div class="row1">
+    <div></div>
+    <div class="currentscore">
+        <h2 id="score-title">BATTING</h2>
+        <h2 id="score">None</h2>
+        <h2 id="mscore">0</h2>
+        <h2 id="mscore-title">BOWLING </h2>
+        <h2 id="total-title">Your Score </h2>
+        <div class="play-buttons">
+            <button type="button" id="next" disabled="true" onclick="play()">NEXT INNING </button>
+            <button type="button"  id="results" onclick="results()">SEE RESULTS</button>
+            <button type="submit" id="preds" onclick="play()">START </button>
+        </div>
+        <h2 id="mtotal-title">Opponent Score </h2>
+        <h2 id="total">0</h2>
+        <h2 id="mtotal">0</h2>
+    </div>
+    <div></div>
+</div>
+    
+
+    <script type="text/javascript" src="{{url_for('static',filename='simulate.js')}}"></script>
     
     
-    <h1 id="score">None</h1>
-    <h1>TOTAL SCORE </h1>
-    <h1 class="total">0</h1>
-    <h1>MACHINE SCORE </h1>
-    <h1 class="mscore">0</h1>
-    <h1>TOTAL SCORE </h1>
-    <h1 class="mtotal">0</h1>
-    <button type="button" id="next" disabled="true" onclick="play()">NEXT INNING </button>
-    <button type="button"  id="results" onclick="results()">SEE RESULTS</button>
-    <button type="submit" id="preds" onclick="predict()">StART </button>
-    <h1 id="prediction">NONE</h1>
 </body>
+
 </html>
