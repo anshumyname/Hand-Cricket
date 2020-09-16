@@ -15,71 +15,89 @@
 
     canvas {
         position: absolute;
-        top: 0;
-        left: 0;
         z-index: 1
     }
 
     .row1 {
         display: grid;
+     
+        grid-column-gap: 1em;
         grid-template-columns: 1fr 2fr 1fr;
     }
     .container{
         display: grid;
-        grid-template-columns: 1fr 2fr 2fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-column-gap:1em;
 
     }
     .container  img, video{
-        border: 10px #ccc solid ;
+        border: 10px lightgreen solid ;
         padding: 10px;
         
     }
-
     .currentscore {
         display: grid;
-        /* grid-auto-rows: 2; */
-        border: 10px;
-
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        /* grid-template-rows: 50% 50%; */
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        background-color: rgb(210, 247, 211,0.5);
+        /* background-opacity: 50%; */
     }
 
     .currentscore h2{
-        background: grey;
+        /* background: whitesmoke; */
         border: red;
+        border: 10px black sold;
         padding:1em;
 
     }
 
+    .tscore {
+        display: grid;
+        grid-template: 1fr;
+        grid-row-gap: 0em;
+    }
     #score-title, #score,#total-title,#total{
         /* justify-content: cente; */
-        color: tomato;
+        color: red
         /* margin-left: 350px; */
     }
     #mscore-title, #mscore, #mtotal-title, #mtotal{
         /* justify-content: center; */
-        color: tomato;
+        color: red;
         /* margin-left: 500px; */
     }
-
-    .play-buttons {
-        /* order: 3; */
-        columns: 3;
-        grid-column: 2/5;
-        
+    #preds {
+        background-color: green;
+        color:red;
+        font-size: 30px;
+        font-family:sans-serif;
     }
+    .play-buttons {
+        padding-left: 20px;
+        padding-top: 10px;
+        padding-right: 50px;
+    
+
+        grid-row:2;
+        grid-column: 2/4;
+        grid-row-gap: 1em;
+
+    }
+
     .play-buttons button{
-        height: 50px; 
-        width: 200px; 
+        height: 70px; 
+        width: 300px; 
+    }
+    body {
+        background-image: url('../static/background.jpg');
     }
 </style>
 
 <body>
-    <center><h1>--- Hand Cricket ---</h1></center>
     
+    <center><img src="/static/name.jpg" width="500" height="80"></center>
+    <br>
     <div class="container">
-        <h1>Player 1</h1>
+        <div style="padding-top:100px; padding-left: 100px; color: white;"><h1>Player 1</h1></div>
         <div class="div1">
             <video id="myVideo" height=300  autoplay></video>
         </div>
@@ -88,7 +106,7 @@
             <img id='image' src="/static/1.jpg" width="300" height="300" >
                                    <!-- url_for('static',filename='3.jpg') -->
         </div>
-        <h1>Player 2</h1>
+        <div style="padding-top:100px; padding-left: 100px; color: yellow;" ><h1>Player 2</h1></div>
     </div>
     <script src="/static/local.js"></script>
     <script id="objDetect" src="/static/objDetect.js" data-source="myVideo" data-mirror="true" data-uploadWidth="1280"
@@ -98,19 +116,28 @@
     <div class="row1">
     <div></div>
     <div class="currentscore">
-        <h2 id="score-title">BATTING</h2>
+        
+        <h2 id="score-title" style="color: red; font-weight:bolder; font-size: 25px;">BATTING </h2>
         <h2 id="score">None</h2>
+        <h2></h2>
         <h2 id="mscore">0</h2>
         <h2 id="mscore-title">BOWLING </h2>
-        <h2 id="total-title">Your Score </h2>
-        <div class="play-buttons">
-            <button type="button" id="next" disabled="true" onclick="play()">NEXT INNING </button>
-            <button type="button"  id="results" onclick="results()">SEE RESULTS</button>
-            <button type="submit" id="preds" onclick="play()">START </button>
+        
+        <div class="tscore">
+            <h2 id="total-title" style="color: blue; font-weight: bolder; font-size: 25px;">Your Score</h2>
+            <h2 id="total" style="font-size: 50px;">0</h2>
         </div>
-        <h2 id="mtotal-title">Opponent Score </h2>
-        <h2 id="total">0</h2>
-        <h2 id="mtotal">0</h2>
+        <div class="play-buttons">
+            <button type="button" id="preds" onclick="play()">START </button>
+            <button type="button" id="next" disabled="true" onclick="play()">NEXT INNING </button>
+            <!-- <button type="button"  id="results" onclick="results()">SEE RESULTS</button> -->
+            
+        </div>
+        <div></div>
+        <div>
+            <h2 id="mtotal-title" style="color: blue; font-weight: bolder; font-size: 25px;">Opponent Score </h2>
+            <h2 id="mtotal" style="font-size: 50px;">0</h2>
+        </div>
     </div>
     <div></div>
 </div>
