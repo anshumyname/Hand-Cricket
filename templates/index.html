@@ -1,8 +1,5 @@
 <html>
-
-<head>
-    
-</head>
+<head></head>
 <style>
     video {
         position: static;
@@ -38,7 +35,7 @@
     .currentscore {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-        background-color: rgb(210, 247, 211,0.5);
+        background-color: rgb(210, 247, 211,0.7);
         /* background-opacity: 50%; */
     }
 
@@ -66,30 +63,69 @@
         /* margin-left: 500px; */
     }
     #preds {
-        background-color: green;
-        color:red;
-        font-size: 30px;
+        background-color: rgb(3, 192, 3);
+        color:white;
+        font-size: 25px;
+        font-family:sans-serif;
+    }
+    #next {
+        background-color: rgba(242, 255, 66, 0.815);
+        color: white;
+        font-size: 25px;
+        font-family:sans-serif;
+    }
+    #reset {
+        background-color: rgba(248, 37, 37, 0.993);
+        color:white;
+        font-size: 25px;
         font-family:sans-serif;
     }
     .play-buttons {
+        display: inline;
+        padding-bottom: 10px;
         padding-left: 20px;
         padding-top: 10px;
         padding-right: 50px;
-    
-
+        justify-content: space-around;
+        
         grid-row:2;
         grid-column: 2/4;
-        grid-row-gap: 1em;
+        /* grid-row-gap: 1em; */
 
     }
 
     .play-buttons button{
         height: 70px; 
         width: 300px; 
+        
     }
     body {
         background-image: url('../static/background.jpg');
     }
+    .simplemodal {
+       display: none;
+       position: fixed;
+       z-index: 1;
+       left: 0;
+       top: 0;
+       height: 100%;
+       width: 100%;
+       overflow: auto; 
+       background-color: rgba(0,0,0,0.5);
+    }
+    .modalcontent {
+        background-color: #f4f4f4;
+        margin: 10% auto;
+        padding: 20px;
+        width: 50%;
+        box-shadow: 0 5px 5px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+
+    }
+
+    .result {
+        grid-column: 3/5;
+    }
+
 </style>
 
 <body>
@@ -97,7 +133,11 @@
     <center><img src="/static/name.jpg" width="500" height="80"></center>
     <br>
     <div class="container">
-        <div style="padding-top:100px; padding-left: 100px; color: white;"><h1>Player 1</h1></div>
+
+        <div style="padding-top:100px; padding-left: 100px; color: yellow; background-color:rgb(149, 201, 233, 0.6);" >
+            <img src="../static/boy.png" width="100" height="100">
+            <h1>Player 1</h1>
+        </div>
         <div class="div1">
             <video id="myVideo" height=300  autoplay></video>
         </div>
@@ -106,13 +146,19 @@
             <img id='image' src="/static/1.jpg" width="300" height="300" >
                                    <!-- url_for('static',filename='3.jpg') -->
         </div>
-        <div style="padding-top:100px; padding-left: 100px; color: yellow;" ><h1>Player 2</h1></div>
+        <div style="padding-top:100px; padding-left: 100px; color: yellow; background-color:rgb(149, 201, 233, 0.6);" >
+            <img src="../static/boy.png" width="100" height="100">
+            <h1>Player 2</h1>
+        </div>
     </div>
     <script src="/static/local.js"></script>
     <script id="objDetect" src="/static/objDetect.js" data-source="myVideo" data-mirror="true" data-uploadWidth="1280"
         data-scoreThreshold="0.25"></script>
     
-
+        <div id="result" style="display:none; padding:5px;font-size: 20px; justify-content: center;
+                 background-color: rgba(231, 253, 132, 0.884); color: rgb(255, 0, 0); align-items: center; font-weight: 900;">
+            <center><h3 id="result"></h3></center>
+        </div>
     <div class="row1">
     <div></div>
     <div class="currentscore">
@@ -130,6 +176,7 @@
         <div class="play-buttons">
             <button type="button" id="preds" onclick="play()">START </button>
             <button type="button" id="next" disabled="true" onclick="play()">NEXT INNING </button>
+            <button type="button" id="reset" onclick="reset()">PLAY AGAIN </button>
             <!-- <button type="button"  id="results" onclick="results()">SEE RESULTS</button> -->
             
         </div>
@@ -142,6 +189,11 @@
     <div></div>
 </div>
     
+<div id="modal" class="simplemodal">
+    <div id="content" class="modalcontent">
+        <img id="show" src="/static/out.jpg">
+    </div>
+</div>
 
     <script type="text/javascript" src="{{url_for('static',filename='simulate.js')}}"></script>
     
