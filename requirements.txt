@@ -14,10 +14,29 @@ numpy == 1.16.5
 # C:\Users\sriva\Documents\Allnode\fivefinger\FIveFingerAPI.py: 4
 opencv-contrib-python == 4.4.0.42
 
+# C:\Users\sriva\Documents\Allnode\fivefinger\FIveFingerAPI.py: 4
+opencv-contrib-python-headless == 4.4.0.42
+
+# C:\Users\sriva\Documents\Allnode\fivefinger\FIveFingerAPI.py: 4
+opencv-openvino-contrib-python == 4.1.1.26
+
+# C:\Users\sriva\Documents\Allnode\fivefinger\FIveFingerAPI.py: 4
+opencv-python == 4.4.0.42
+
+# C:\Users\sriva\Documents\Allnode\fivefinger\FIveFingerAPI.py: 4
+opencv-python-aarch64 == 3.3.0.1
+
+# C:\Users\sriva\Documents\Allnode\fivefinger\FIveFingerAPI.py: 4
+opencv-python-headless == 4.4.0.42
+
+# C:\Users\sriva\Documents\Allnode\fivefinger\FIveFingerAPI.py: 4
+opencv-python-inference-engine == 4.4.0.0
+
+# C:\Users\sriva\Documents\Allnode\fivefinger\FIveFingerAPI.py: 4
+opencvz-contrib-python == 4.1.1.26
+
 # C:\Users\sriva\Documents\Allnode\fivefinger\server.py: 2
 requests == 2.22.0
 
 # C:\Users\sriva\Documents\Allnode\fivefinger\FIveFingerAPI.py: 1,2
 tensorflow == 2.3.0
-
-gunicorn == 20.0.4
