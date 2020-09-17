@@ -8,8 +8,6 @@ import numpy as np
 
 app= Flask(__name__)
 
-
-
 @app.after_request
 def after_request(response):
     response.headers.add('Access-Control-Allow-Origin', '*')
