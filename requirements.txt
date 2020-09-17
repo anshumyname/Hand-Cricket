@@ -19,3 +19,5 @@ requests == 2.22.0
 
 # C:\Users\sriva\Documents\Allnode\fivefinger\FIveFingerAPI.py: 1,2
 tensorflow == 2.3.0
+
+gunicorn == 20.0.4
