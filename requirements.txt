@@ -18,7 +18,7 @@ opencv-contrib-python == 4.4.0.42
 opencv-contrib-python-headless == 4.4.0.42
 
 # C:\Users\sriva\Documents\Allnode\fivefinger\FIveFingerAPI.py: 4
-opencv-openvino-contrib-python == 4.1.1.26
+
 
 # C:\Users\sriva\Documents\Allnode\fivefinger\FIveFingerAPI.py: 4
 opencv-python == 4.4.0.42
@@ -31,9 +31,6 @@ opencv-python-headless == 4.4.0.42
 
 # C:\Users\sriva\Documents\Allnode\fivefinger\FIveFingerAPI.py: 4
 opencv-python-inference-engine == 4.4.0.0
-
-# C:\Users\sriva\Documents\Allnode\fivefinger\FIveFingerAPI.py: 4
-opencvz-contrib-python == 4.1.1.26
 
 # C:\Users\sriva\Documents\Allnode\fivefinger\server.py: 2
 requests == 2.22.0
