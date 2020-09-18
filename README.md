@@ -14,8 +14,8 @@ The project involves a python backend of flask for performing ML part and a Java
 - tensorflow 2.3.0
 
 ## WorkFlow
-First two JS scripts **objDetect.js** and **local.js** will run to make a canvas and open the webcam on the client side then using the webcam's frame we'll make a HTTP request to the server sending the frames from the cam.<br>
-Now the **server.py** will recieve the request and call the FiveFingerAPI i.e. the python file which predicts the number of fingers and returns the prediction. The server then sends it back to script and it gets updated in HTML page.<br>
+First two JS scripts **objDetect.js** and **local.js** will run to make a canvas and open the webcam on the client side then using the webcam's frame we'll make a HTTP request to the server sending the frames from the cam. <br>
+Now the **server.py** will recieve the request and call the FiveFingerAPI i.e. the python file which predicts the number of fingers and returns the prediction. The server then sends it back to script and it gets updated in HTML page. <br>
 Now we have got the prediction so at every 1.5s interval we take the numbers from both the players and compare it. If they are same its an out else update the score. Accordingly do the changes for the next inning . 
 
 
